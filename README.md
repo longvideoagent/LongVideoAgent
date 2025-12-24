@@ -3,8 +3,11 @@
 <div align="center">
 
 [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
+
 Runtao Liu\*, Ziyi Liu\*, Jiaqi Tang, Yue Ma, Renjie Pi, Jipeng Zhang, Qifeng Chen
+
 Hong Kong University of Science and Technology
+
 \* Equal contribution
 
 </div>
