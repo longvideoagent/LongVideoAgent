@@ -31,7 +31,7 @@ Recent advances in multimodal LLMs and systems that use tools for long-video QA 
 ---
 
 ## 🤖 Method: Multi-Agent Framework
-![Architecture](https://arxiv.org/html/2512.20618v1/x2.png)
+![Architecture](readme_src/architecture.png)
 
 Architecture of **LongVideoAgent**. A **MasterAgent** runs for up to $K$ rounds, collaborating with a **GroundingAgent** to localize relevant clips from videos and a **VisionAgent** to read fine-grained cues from the localized frames. Evidence accumulates until the **MasterAgent** feels confident to answer the user.
 
