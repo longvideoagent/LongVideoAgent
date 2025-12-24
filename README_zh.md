@@ -5,8 +5,17 @@
 
 ---
 
+## 🌟 概览
+传统的单次处理 MLLM 在一个上下文中摄取整个长视频，通常（可能通过大量的下采样和压缩）经常会丢失关键证据并产生错误的答案，而 **LongVideoAgent** 进行*多智能体*、*多轮*和*多模态*推理，以提取稀疏的、与任务相关的线索并正确回答。
+
+<p align="center">
+  <img src="readme_src/teaser.png" width="100%" />
+</p>
+
+---
+
 ## 🤖 方法：多智能体框架
-![Architecture](https://arxiv.org/html/2512.20618v1/x2.png)
+![Architecture](readme_src/architecture.png)
 
 **LongVideoAgent** 的架构。**MasterAgent** 运行最多 $K$ 轮，与 **GroundingAgent** 协作从视频中定位相关剪辑，并与 **VisionAgent** 协作从定位的帧中读取细粒度线索。证据不断累积，直到 **MasterAgent** 有信心回答用户的问题。
 
