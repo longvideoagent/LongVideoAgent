@@ -30,6 +30,15 @@ Recent advances in multimodal LLMs and systems that use tools for long-video QA 
 
 ---
 
+## 🌟 Overview
+Traditional single-pass MLLMs that ingest entire long videos in one context—typically (may through heavy downsampling and compression) often miss crucial evidence and produce wrong answers, whereas **LongVideoAgent** conducts *multi-agent*, *multi-round*, and *multimodal* reasoning to extract sparse, task-relevant cues and answer correctly.
+
+<p align="center">
+  <img src="readme_src/teaser.png" width="100%" />
+</p>
+
+---
+
 ## 🤖 Method: Multi-Agent Framework
 ![Architecture](readme_src/architecture.png)
 
