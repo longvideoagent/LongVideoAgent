@@ -19,6 +19,10 @@ This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). C
 ## 🚀 Latest News
 • `[2025/12/24]:` 🚀 We released our paper "LongVideoAgent: Multi-Agent Reasoning with Long Videos" on [arXiv](https://arxiv.org/abs/2512.20618)!
 
+## 📅 Roadmap
+- [ ] **[2026/01/01]**: Release **LongTVQA** & **LongTVQA+** datasets.
+- [ ] **[2026/01 - 2026/02]**: Release code for inference and training.
+
 ---
 
 ## 📝 Abstract
