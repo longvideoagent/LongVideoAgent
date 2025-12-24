@@ -9,7 +9,7 @@
 传统的单次处理 MLLM 在一个上下文中摄取整个长视频，通常（可能通过大量的下采样和压缩）经常会丢失关键证据并产生错误的答案，而 **LongVideoAgent** 进行*多智能体*、*多轮*和*多模态*推理，以提取稀疏的、与任务相关的线索并正确回答。
 
 <p align="center">
-  <img src="readme_src/teaser.png" width="100%" />
+  <img src="readme_src/teaser.png" width="50%" />
 </p>
 
 ---
