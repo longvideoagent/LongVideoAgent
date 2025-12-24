@@ -1,12 +1,17 @@
-# LongVideoAgent: Multi-Agent Reasoning with Long Videos 🎬🤖
+# 🎬LongVideoAgent: Multi-Agent Reasoning with Long Videos
+
+<div align="center">
 
 [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
+Runtao Liu\*, Ziyi Liu\*, Jiaqi Tang, Yue Ma, Renjie Pi, Jipeng Zhang, Qifeng Chen
+Hong Kong University of Science and Technology
+\* Equal contribution
 
-Runtao Liu, Ziyi Liu, Jiaqi Tang, Yue Ma, Renjie Pi, Jipeng Zhang, Qifeng Chen
-
-**Hong Kong University of Science and Technology**
+</div>
 
 ---
+
+This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Code and dataset are coming soon.
 
 ## 🚀 Latest News
 • `[2025/12/24]:` 🚀 We released our paper "LongVideoAgent: Multi-Agent Reasoning with Long Videos" on [arXiv](https://arxiv.org/abs/2512.20618)!
@@ -30,11 +35,7 @@ Unlike single-pass models, LongVideoAgent operates in a bounded loop (max $K$ st
 - `<answer>`: Terminates the loop and provides the final response when sufficient evidence is gathered.
 
 ### 🧠 Reinforcement Learning (GRPO)
-We optimize the MasterAgent using **Group Relative Policy Optimization (GRPO)**. The training objective balances:
-1.  **Structural Validity**: Ensuring the agent emits exactly one valid action token per turn.
-2.  **Answer Correctness**: Rewarding the agent for reaching the correct final answer.
-
-*Note: The GroundingAgent (e.g., Grok) and VisionAgent (e.g., GPT-4o) are kept frozen during training.*
+We optimize the MasterAgent using Group Relative Policy Optimization (GRPO). The training objective includes: 1.  Structural validity. 2.  Answer Correctness: Rewarding the agent for reaching the correct final answer.
 
 ---
 
