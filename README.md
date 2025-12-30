@@ -18,10 +18,15 @@ This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). C
 
 ## 🚀 Latest News
 • `[2025/12/24]:` 🚀 We released our paper "LongVideoAgent: Multi-Agent Reasoning with Long Videos" on [arXiv](https://arxiv.org/abs/2512.20618)!
+• `[2025/12/30]:` 📦 We released the **LongTVQA+** dataset on [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus).
 
 ## 📅 Roadmap
-- [ ] **[2026/01/01]**: Release **LongTVQA** & **LongTVQA+** datasets.
+- [ ] **[2026/01/01]**: Release **LongTVQA** dataset.
 - [ ] **[2026/01 - 2026/02]**: Release code for inference and training.
+
+---
+## 📦 Dataset
+- **LongTVQA+**: https://huggingface.co/datasets/longvideoagent/LongTVQA_plus
 
 ---
 
@@ -89,6 +94,4 @@ If you find our work helpful, please cite:
 ```
 
 ---
-
-
 
