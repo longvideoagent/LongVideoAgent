@@ -1,5 +1,20 @@
 # 🎬LongVideoAgent: 长视频多智能体推理
 
+## 🚀 最新消息
+• `[2025/12/24]:` 🚀 我们在 [arXiv](https://arxiv.org/abs/2512.20618) 发布了论文《LongVideoAgent: Multi-Agent Reasoning with Long Videos》！
+• `[2025/12/30]:` 📦 我们在 [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus) 发布了 **LongTVQA+** 数据集。
+
+## 📅 Roadmap（路线图）
+- [ ] **[2026/01/01]**: 发布 **LongTVQA** 数据集。
+- [ ] **[2026/01 - 2026/02]**: 发布推理与训练代码。
+
+---
+
+## 📦 数据集
+- **LongTVQA+**: https://huggingface.co/datasets/longvideoagent/LongTVQA_plus
+
+---
+
 ## 📝 摘要
 多模态大语言模型（MLLM）和基于工具的长视频问答系统的最新进展展示了对长达一小时视频进行推理的前景。然而，许多方法仍将内容压缩为有损摘要或依赖有限的工具集，削弱了时间定位并丢失了细粒度线索。我们提出了 **LongVideoAgent**，这是一个多智能体框架，其中 Master LLM 协调 Grounding Agent 定位与问题相关的片段，并协调 Vision Agent 提取针对性的视觉观测。Master Agent 以步数限制进行规划，并通过强化学习（GRPO）进行训练，以鼓励简洁、正确且高效的多智能体协作。这种设计通过定位帮助 Master Agent 专注于相关剪辑，用视觉细节补充字幕，并产生可解释的轨迹。在我们提出的 LongTVQA 和 LongTVQA+（从 TVQA/TVQA+ 聚合而成的剧集级数据集）上，我们的多智能体系统显著优于强大的非智能体基线。实验还表明，强化学习进一步加强了训练后智能体的推理和规划能力。
 
