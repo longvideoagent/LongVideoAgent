@@ -17,17 +17,21 @@ Hong Kong University of Science and Technology
 This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Code and dataset are coming soon.
 
 ## 🚀 Latest News
-• `[2025/12/24]:` 🚀 We released our paper "LongVideoAgent: Multi-Agent Reasoning with Long Videos" on [arXiv](https://arxiv.org/abs/2512.20618)!
+• `[2026/02/14]:` 📦 We released the **LongTVQA** dataset on [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA).
 
 • `[2025/12/30]:` 📦 We released the **LongTVQA+** dataset on [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus).
 
+• `[2025/12/24]:` 🚀 We released our paper "LongVideoAgent: Multi-Agent Reasoning with Long Videos" on [arXiv](https://arxiv.org/abs/2512.20618)!
+
+---
+
 ## 📅 Roadmap
-- [ ] **[2026/01/01]**: Release **LongTVQA** dataset.
-- [ ] **[2026/01 - 2026/02]**: Release code for inference and training.
+- [ ] **[2026/02]**: Release code for inference and training. (Coming soon! 🛠️)
 
 ---
 ## 📦 Dataset
-- **LongTVQA+**: https://huggingface.co/datasets/longvideoagent/LongTVQA_plus
+- **LongTVQA**: [https://huggingface.co/datasets/longvideoagent/LongTVQA](https://huggingface.co/datasets/longvideoagent/LongTVQA)
+- **LongTVQA+**: [https://huggingface.co/datasets/longvideoagent/LongTVQA_plus](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus)
 
 ---
 
