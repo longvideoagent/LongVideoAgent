@@ -7,7 +7,7 @@ First, create a virtual environment named `lvagent`, clone our repository, and p
 ```bash
 conda create -n lvagent python=3.11
 conda activate lvagent
-cd ./VideoQAgent
+cd ./LongVideoAgent
 # Install verl
 pip install -e .
 # Install flash-attention 2
