@@ -2,7 +2,7 @@
 
 <div align="center">
 
- [中文](./README_zh.md) | [Docs Site](https://longvideoagent.github.io/LongVideoAgent/) | [Docs Source](./docs/index.md) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
+ [中文](./README_zh.md) | [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
 
 Runtao Liu\*, Ziyi Liu\*, Jiaqi Tang, Yue Ma, Renjie Pi, Jipeng Zhang, Qifeng Chen
 
@@ -14,7 +14,7 @@ Hong Kong University of Science and Technology
 
 ---
 
-This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available.
+This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available. For installation, quickstart, training, and evaluation details, see the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/).
 
 ## 🚀 Latest News
 • `[2026/03/06]:` 🚀 We released the **training** and **evaluation** code for **LongVideoAgent**.
