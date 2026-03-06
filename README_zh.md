@@ -1,6 +1,8 @@
 # 🎬LongVideoAgent: 长视频多智能体推理
 
-[English](./README.md) | [Docs Site](https://longvideoagent.github.io/LongVideoAgent/) | [Docs Source](./docs/index.md) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
+[English](./README.md) | [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
+
+训练、评测、安装与快速开始相关说明，请参见 [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/)。
 
 ## 🚀 最新消息
 • `[2026/03/06]:` 🚀 我们发布了 **LongVideoAgent** 的**训练代码**与**评测代码**！
