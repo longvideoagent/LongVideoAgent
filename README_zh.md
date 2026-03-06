@@ -1,12 +1,17 @@
 # 🎬LongVideoAgent: 长视频多智能体推理
 
+[English](./README.md) | [Docs Site](https://longvideoagent.github.io/LongVideoAgent/) | [Docs Source](./docs/index.md) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
+
 ## 🚀 最新消息
+• `[2026/03/06]:` 🚀 我们发布了 **LongVideoAgent** 的**训练代码**与**评测代码**！
+
 • `[2025/12/24]:` 🚀 我们在 [arXiv](https://arxiv.org/abs/2512.20618) 发布了论文《LongVideoAgent: Multi-Agent Reasoning with Long Videos》！
 • `[2025/12/30]:` 📦 我们在 [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus) 发布了 **LongTVQA+** 数据集。
+• `[2026/02/14]:` 📦 我们在 [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA) 发布了 **LongTVQA** 数据集。
 
 ## 📅 Roadmap（路线图）
-- [ ] **[2026/01/01]**: 发布 **LongTVQA** 数据集。
-- [ ] **[2026/01 - 2026/02]**: 发布推理与训练代码。
+- [x] **[2026/02/14]**: 发布 **LongTVQA** 数据集。
+- [x] **[2026/03/06]**: 发布训练代码与评测代码。
 
 ---
 

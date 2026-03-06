@@ -1,5 +1,6 @@
 site_name: LongVideoAgent Docs
 site_description: Documentation for LongVideoAgent
+site_url: https://longvideoagent.github.io/LongVideoAgent/
 repo_url: https://github.com/longvideoagent/LongVideoAgent
 repo_name: longvideoagent/LongVideoAgent
 
@@ -19,10 +20,12 @@ nav:
   - Dataset Processing:
       - Convert to Parquet: training/convert-to-parquet.md
   - Training:
+      - Overview: training.md
       - GRPO: training/grpo-config-details.md
       - Offline Grounding Cache: training/offline-grounding-cache.md
       - LoRA Adapter Merge: training/lora-adapter-merge.md
   - Evaluation: evaluation.md
+  - Changelog: CHANGELOG.md
 
 markdown_extensions:
   - admonition

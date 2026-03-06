@@ -216,7 +216,7 @@ python src/evaluation/lvagent/evaluate_local_unified.py \
 
 ## Baseline Evaluation
 
-This section outlines the baseline evaluation script for the VideoQAgent project, located in `src/evaluation/baseline`. The script evaluates a model's performance on the TVQA dataset (or variants like TVQA+) using an API-based model for question-answering tasks.
+This section outlines the baseline evaluation script for the LongVideoAgent repository, located in `src/evaluation/baseline`. The script evaluates a model's performance on the TVQA dataset (or variants like TVQA+) using an API-based model for question-answering tasks.
 
 ### Overview
 

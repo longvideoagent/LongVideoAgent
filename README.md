@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[中文](./README_zh.md) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
+ [中文](./README_zh.md) | [Docs Site](https://longvideoagent.github.io/LongVideoAgent/) | [Docs Source](./docs/index.md) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
 
 Runtao Liu\*, Ziyi Liu\*, Jiaqi Tang, Yue Ma, Renjie Pi, Jipeng Zhang, Qifeng Chen
 
@@ -14,9 +14,11 @@ Hong Kong University of Science and Technology
 
 ---
 
-This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Code and dataset are coming soon.
+This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available.
 
 ## 🚀 Latest News
+• `[2026/03/06]:` 🚀 We released the **training** and **evaluation** code for **LongVideoAgent**.
+
 • `[2026/02/14]:` 📦 We released the **LongTVQA** dataset on [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA).
 
 • `[2025/12/30]:` 📦 We released the **LongTVQA+** dataset on [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus).
@@ -26,7 +28,7 @@ This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). C
 ---
 
 ## 📅 Roadmap
-- [ ] **[2026/02]**: Release code for inference and training. (Coming soon! 🛠️)
+- [x] **[2026/03/06]**: Released training and evaluation code.
 
 ---
 ## 📦 Dataset
@@ -99,4 +101,3 @@ If you find our work helpful, please cite:
 ```
 
 ---
-

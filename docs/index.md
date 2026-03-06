@@ -1,24 +1,36 @@
-# LongVideoAgent
+# LongVideoAgent Docs
 
-**A multi-agent framework for reasoning over long videos, with a master LLM coordinating grounding and vision agents for efficient, fine-grained video QA.**
+LongVideoAgent is a multi-agent framework for reasoning over long videos. A master LLM iteratively coordinates a grounding agent and a vision agent to localize relevant clips, inspect visual evidence, and answer long-video QA questions with interpretable multi-step traces.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)  
-[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/downloads/)  
-[![arXiv](https://img.shields.io/badge/arXiv-2512.20618-b31b1b.svg)](https://arxiv.org/abs/2512.20618)  
-[![GitHub stars](https://img.shields.io/github/stars/longvideoagent/LongVideoAgent?style=social)](https://github.com/longvideoagent/LongVideoAgent)
-
----
+[Project Page](https://longvideoagent.github.io/) | [Paper](https://arxiv.org/abs/2512.20618) | [Dataset: LongTVQA](https://huggingface.co/datasets/longvideoagent/LongTVQA) | [Dataset: LongTVQA+](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus)
 
 ## Overview
 
-This repository provides a **complete implementation** of **LongVideoAgent** — a multi-agent system for reasoning over hour-long videos. It addresses the limitations of traditional MLLMs that rely on lossy compression or limited tools, by enabling a **master LLM** to iteratively coordinate:
+Recent long-video QA systems often rely on lossy summarization or limited tool use, which weakens temporal grounding and misses fine-grained cues. LongVideoAgent instead uses a bounded multi-agent reasoning loop:
 
-- A **grounding agent** to localize question-relevant video segments.
-- A **vision agent** to extract fine-grained visual observations (objects, actions, faces, etc.).
+- The **MasterAgent** plans the next step and decides when enough evidence has been collected.
+- The **GroundingAgent** localizes question-relevant video clips from subtitles.
+- The **VisionAgent** inspects sampled frames from the localized clips and returns targeted visual observations.
 
-The framework supports:
-- **Training**: Reinforcement learning via **[VERL](https://github.com/volcengine/verl)** to optimize the master agent's planning and multi-agent cooperation.
-- **Evaluation**: Full agent pipelines on episode-level benchmarks.
-- **Baseline**: API-based evaluation (e.g., Gemini) on TVQA and TVQA+ for rapid prototyping.
+This repository documents the codebase for:
 
-Key datasets: **LongTVQA** and **LongTVQA+** (aggregated from TVQA/TVQA+). The system achieves state-of-the-art results with interpretable, multi-round decision traces.
+- Running **quickstart GRPO training** for the master agent.
+- Building **offline grounding caches** and converting datasets into training-ready formats.
+- Running **unified local/API evaluation** on LongTVQA and LongTVQA+.
+
+## Documentation Guide
+
+- Start with [Installation](installation.md) to set up the environment.
+- Use [Quickstart](training/quickstart.md) for the shortest end-to-end training path.
+- See [Evaluation](evaluation.md) for local and API-based evaluation scripts.
+- Use the training pages for GRPO config details, offline grounding cache generation, and LoRA adapter merging.
+
+## Method Summary
+
+LongVideoAgent operates in a bounded loop with up to `K` reasoning rounds. At each step, the master agent emits a structured action:
+
+- `<request_grounding>` to search for relevant clips.
+- `<visual_query>` to inspect selected clips with the vision agent.
+- `<answer>` to terminate and return the final option.
+
+The master agent is optimized with reinforcement learning so that trajectories remain structurally valid, concise, and correct.
