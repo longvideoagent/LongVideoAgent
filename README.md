@@ -43,6 +43,7 @@ We recommend creating a clean Python 3.11 environment and installing the project
 ```bash
 conda create -n lvagent python=3.11
 conda activate lvagent
+pip install vllm
 pip install -e .
 pip install flash-attn --no-build-isolation
 pip install wandb
