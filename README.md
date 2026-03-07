@@ -104,10 +104,10 @@ For more detailed training instructions, see [Quickstart](docs/training/quicksta
 
 ---
 
-## 📊 Eval
-LongVideoAgent provides unified local and API evaluation scripts for both LongTVQA and LongTVQA+.
+## 📊 Evaluation
+LongVideoAgent provides evaluation scripts for both LongTVQA and LongTVQA+. The difference between the local and API versions lies in how the Master Agent performs reasoning: the local version runs the Master Agent with a local LLM, while the API version calls an API-hosted model for the Master Agent.
 
-### Unified local evaluation
+### Local evaluation
 
 ```bash
 python src/evaluation/lvagent/evaluate_local_unified.py \
@@ -117,7 +117,7 @@ python src/evaluation/lvagent/evaluate_local_unified.py \
   --gpu_memory_utilization 0.4
 ```
 
-### Unified API evaluation
+### API evaluation
 
 ```bash
 python src/evaluation/lvagent/evaluate_api_unified.py \
