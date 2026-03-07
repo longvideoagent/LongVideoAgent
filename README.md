@@ -14,7 +14,7 @@ Hong Kong University of Science and Technology
 
 ---
 
-This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available. For installation, quickstart, training, and evaluation details, see the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/).
+This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available. This README provides a compact code overview, while the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) contain the full setup, workflow, and argument details.
 
 ## 🚀 Latest News
 • `[2026/03/06]:` 🚀 We released the **training** and **evaluation** code for **LongVideoAgent**.
@@ -34,6 +34,109 @@ This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). T
 ## 📦 Dataset
 - **LongTVQA**: [https://huggingface.co/datasets/longvideoagent/LongTVQA](https://huggingface.co/datasets/longvideoagent/LongTVQA)
 - **LongTVQA+**: [https://huggingface.co/datasets/longvideoagent/LongTVQA_plus](https://huggingface.co/datasets/longvideoagent/LongTVQA_plus)
+
+---
+
+## 🛠️ Installation
+We recommend creating a clean Python 3.11 environment and installing the project from the repository root:
+
+```bash
+conda create -n lvagent python=3.11
+conda activate lvagent
+pip install vllm
+pip install -e .
+pip install flash-attn --no-build-isolation
+pip install wandb
+```
+
+If dependency resolution fails, you can install the package first without dependencies and then install from `requirements.txt`:
+
+```bash
+pip install -e . --no-deps
+pip install -r requirements.txt
+```
+
+For step-by-step installation details, see [docs/installation.md](docs/installation.md).
+
+---
+
+## 🏋️ Train
+The recommended training flow is: prepare datasets, build an offline grounding cache, convert data to GRPO parquet files, and then launch the quickstart script.
+
+### 1. Download and prepare LongTVQA assets
+
+```bash
+bash scripts/download_and_prepare_longtvqa.sh
+```
+
+### 2. Build the offline grounding cache
+
+```bash
+python src/dataset/build_grounding_cache.py \
+  --dataset tvqa_plus \
+  --questions-path /path/to/train.json \
+  --subs-path /path/to/all_episodes_subtitles_by_clips.json \
+  --grounding-model "grok-4-fast-reasoning" \
+  --grounding-base-url "https://api2.aigcbest.top/v1" \
+  --output-dir /path/to/cache_dir \
+  --threads 8
+```
+
+### 3. Convert the dataset to training parquet files
+
+```bash
+python src/dataset/convert_tvqa_json_to_grpo_parquet.py \
+  --questions-path /path/to/LongTVQA_or_LongTVQA_plus_questions.jsonl_or_json \
+  --grounding-cache-json /path/to/grounding_cache.json \
+  --subtitles-dir /path/to/subtitles_dir \
+  --output-dir ./data \
+  --seed 42
+```
+
+### 4. Launch quickstart GRPO training
+
+```bash
+bash scripts/quickstart_qwen_2_5_3B_grpo.sh
+```
+
+The quickstart script expects `./data/train.parquet` and `./data/val.parquet`. Grounding and vision API credentials can be passed by CLI or read from environment variables in the training pipeline.
+
+For more detailed training instructions, see [Quickstart](docs/training/quickstart.md), [Offline Grounding Cache](docs/training/offline-grounding-cache.md), [Convert to Parquet](docs/training/convert-to-parquet.md), and [GRPO Config Details](docs/training/grpo-config-details.md).
+
+---
+
+## 📊 Evaluation
+LongVideoAgent provides evaluation scripts for both LongTVQA and LongTVQA+. The difference between the local and API versions lies in how the Master Agent performs reasoning: the local version runs the Master Agent with a local LLM, while the API version calls an API-hosted model for the Master Agent.
+
+### Local evaluation
+
+```bash
+python src/evaluation/lvagent/evaluate_local_unified.py \
+  --dataset tvqa_plus \
+  --llm-path "/path/to/your/local_llm" \
+  --max_turn 5 \
+  --gpu_memory_utilization 0.4
+```
+
+### API evaluation
+
+```bash
+python src/evaluation/lvagent/evaluate_api_unified.py \
+  --dataset tvqa_plus \
+  --checkpoint_step api \
+  --max_turn 5 \
+  --threads 30
+```
+
+To prepare evaluation-ready dataset files, you can also run:
+
+```bash
+bash scripts/download_and_prepare_longtvqa.sh
+```
+
+If API keys are not passed explicitly, the evaluation scripts read them from environment variables such as `qdd_api` and `aliyun_api`.
+
+For full evaluation setups and argument descriptions, see [docs/evaluation.md](docs/evaluation.md).
 
 ---
 
