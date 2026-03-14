@@ -22,6 +22,7 @@ nav:
   - Training:
       - Overview: training.md
       - GRPO: training/grpo-config-details.md
+      - verl_new Migration: training/verl_new_migration.md
       - Offline Grounding Cache: training/offline-grounding-cache.md
       - LoRA Adapter Merge: training/lora-adapter-merge.md
   - Evaluation: evaluation.md

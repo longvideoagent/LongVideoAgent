@@ -13,3 +13,5 @@ transformers
 wandb
 IPython
 matplotlib
+openai
+Pillow

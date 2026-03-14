@@ -454,6 +454,7 @@ def convert(
             creator_rows.append(
                 {
                     "prompt": [{"role": "user", "content": prompt_content}],
+                    "agent_name": "longvideoagent_multiturn",
                     "data_source": "tvqa_plus_vision",
                     "reward_model": {"ground_truth": ground_truth, "one_turn": False},
                     "extra_info": {

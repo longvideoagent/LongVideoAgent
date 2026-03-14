@@ -25,12 +25,18 @@ python src/dataset/build_grounding_cache.py \
   --threads 8
 ```
 
-## 3. Start 3B quickstart training
+## 3. Start quickstart training
 
-This step launches the GRPO quickstart training script.
+This step launches training.
 
 ```bash
 bash scripts/quickstart_qwen_2_5_3B_grpo.sh
+```
+
+For the `verl_new` migration path (official agent loop + reward loop), use:
+
+```bash
+bash scripts/train_qwen_2_5_7B_grpo_verl_new.sh
 ```
 
 ## Reference Metrics (for quickstart runs)
