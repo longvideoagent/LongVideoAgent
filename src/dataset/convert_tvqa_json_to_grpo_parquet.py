@@ -314,7 +314,7 @@ def _extract_qa_fields(item: Dict[str, Any], rng: random.Random) -> Optional[Tup
 def convert(
     questions_path: str,
     output_dir: str,
-    grounding_cache_json: str,
+    grounding_cache_json: Optional[str],
     subtitles_dir: str,
     train_per_creator: int = 16,
     val_per_creator: int = 4,
@@ -334,9 +334,27 @@ def convert(
     episode_to_clips = _build_episode_to_clips(clip_subtitles)
     all_clip_ids = list(clip_subtitles.keys())
 
-    _, q_to_clip = _load_grounding_cache(grounding_cache_json)
-    if not q_to_clip:
-        raise RuntimeError("No usable clip mapping found in grounding cache JSON")
+    q_to_clip: Dict[str, str] = {}
+    if grounding_cache_json:
+        try:
+            _, q_to_clip = _load_grounding_cache(grounding_cache_json)
+            if not q_to_clip:
+                print(
+                    "[warn] grounding cache provided but no usable question->clip mapping found; "
+                    "will fallback to random initial clip when cache misses."
+                )
+        except FileNotFoundError:
+            print(
+                f"[warn] grounding cache file not found: {grounding_cache_json}; "
+                "will fallback to random initial clip."
+            )
+        except Exception as e:
+            print(
+                f"[warn] failed to load grounding cache ({grounding_cache_json}): {e}; "
+                "will fallback to random initial clip."
+            )
+    else:
+        print("[info] no grounding cache provided; using random initial clip fallback.")
 
     raw_items = _load_json_or_jsonl(questions_path)
     all_items: List[Tuple[str, str, Dict[str, Any]]] = []
@@ -485,7 +503,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="LongTVQA/LongTVQA+ JSON/JSONL -> GRPO parquet converter")
     parser.add_argument("--questions-path", type=str, required=True, help="Path to LongTVQA or LongTVQA+ questions file")
     parser.add_argument("--output-dir", type=str, required=True, help="Output dir for train.parquet and val.parquet")
-    parser.add_argument("--grounding-cache-json", type=str, required=True, help="Cache JSON from build_grounding_cache.py")
+    parser.add_argument(
+        "--grounding-cache-json",
+        type=str,
+        default=None,
+        help=(
+            "Optional cache JSON from build_grounding_cache.py. "
+            "If omitted/unavailable/empty, initial clip falls back to random sampling."
+        ),
+    )
     parser.add_argument(
         "--subtitles-dir",
         type=str,
