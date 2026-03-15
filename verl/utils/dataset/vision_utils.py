@@ -17,10 +17,11 @@ from typing import Optional
 
 import torch
 from PIL import Image
-from qwen_vl_utils import fetch_image, fetch_video
 
 
-def process_image(image: dict | Image.Image) -> Image.Image:
+def process_image(image: dict | Image.Image, image_patch_size: int = 14) -> Image.Image:
+    from qwen_vl_utils import fetch_image
+
     if isinstance(image, Image.Image):
         return image.convert("RGB")
 
@@ -28,7 +29,11 @@ def process_image(image: dict | Image.Image) -> Image.Image:
         assert "image" not in image, "Cannot have both `bytes` and `image`"
         image["image"] = Image.open(BytesIO(image["bytes"]))
 
-    return fetch_image(image)
+    try:
+        ans = fetch_image(image, image_patch_size=image_patch_size)
+    except Exception:
+        ans = fetch_image(image)
+    return ans
 
 
 VIDEO_FORMAT_HELP = """Currently, we only support the video formats introduced in qwen2-vl.
@@ -61,15 +66,19 @@ eg.
 
 def process_video(
     video: dict,
+    image_patch_size: int = 14,
     nframes: Optional[int] = None,
     fps: Optional[float] = None,
     fps_min_frames: Optional[int] = None,
     fps_max_frames: Optional[int] = None,
+    return_video_sample_fps: bool = False,
+    return_video_metadata: bool = False,
 ) -> torch.Tensor:
     """Converts a video dict into a [n_frames, 3, H, W] tensor
 
     Add video sample FPS in a future MR
     """
+    from qwen_vl_utils import fetch_video
 
     if not isinstance(video, dict) or "video" not in video:
         raise NotImplementedError(VIDEO_FORMAT_HELP)
@@ -89,7 +98,12 @@ def process_video(
             if fps_max_frames is not None:
                 video["max_frames"] = fps_max_frames
 
-    return fetch_video(video)
+    return fetch_video(
+        video,
+        image_patch_size=image_patch_size,
+        return_video_sample_fps=return_video_sample_fps,
+        return_video_metadata=return_video_metadata,
+    )
 
 
 def process_multi_modal_inputs_for_minicpmo(input_ids, attention_mask, position_ids, cu_seqlens, multi_modal_inputs):

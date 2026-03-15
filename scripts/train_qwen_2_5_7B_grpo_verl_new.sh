@@ -6,27 +6,22 @@ VERL_NEW_ROOT="${PROJECT_ROOT}/verl_new"
 AGENT_LOOP_CONFIG="${PROJECT_ROOT}/videoagent/verl_ext/config/agent_loop.yaml"
 REWARD_FN_PATH="${PROJECT_ROOT}/videoagent/verl_ext/reward.py"
 
-export PYTHONPATH="${VERL_NEW_ROOT}:${PROJECT_ROOT}:${PYTHONPATH:-}"
 
 # ==================== Runtime Environment ====================
-export RAY_TMPDIR="${RAY_TMPDIR:-/home/rliuay/runtao/proj_videoqa}"
-export VLLM_USE_V1=0
 export RAY_DISABLE_DOCKER_CPU_WARNING=1
-export VLLM_ATTENTION_BACKEND=XFORMERS
-
 # ==================== Experiment Settings ====================
 export WAND_PROJECT="longvideoagent_train"
-export BASE_MODEL="Qwen/Qwen2.5-7B-Instruct"
+export BASE_MODEL="../model/Qwen2.5-7B-Instruct"
 export EXPERIMENT_NAME="${WAND_PROJECT}_verl_new_$(date +%Y%m%d_%H%M%S)"
 
-export TRAIN_DATA_DIR="/home/rliuay/runtao/proj_videoqa/Vision-R1_bbox/data/tvqa_plus/train"
-export TEST_DATA_DIR="/home/rliuay/runtao/proj_videoqa/Vision-R1_bbox/data/tvqa_plus/test"
-TRAIN_FILE="${TRAIN_DATA_DIR}/train_newaction.parquet"
-VAL_FILE="${TEST_DATA_DIR}/test.parquet"
+export TRAIN_DATA_DIR="/root/autodl-tmp/data/tvqa_plus"
+export TEST_DATA_DIR="/root/autodl-tmp/data/tvqa_plus"
+TRAIN_FILE="${TRAIN_DATA_DIR}/train.parquet"
+VAL_FILE="${TEST_DATA_DIR}/val.parquet"
 
 VISION_BASE_FRAME_DIR="../Tvqa_data/bbt_frames"
 VISION_BBOX_JSON_PATH="../Tvqa_data/clip_bbox_mapping.json"
-VISION_SUBS_PATH="../Tvqa_data/all_episodes_subtitles_by_clips.json"
+VISION_SUBS_PATH="../Tvqa_data/hf_datasets/LongTVQA_plus/LongTVQA_plus_subtitle_clip_level.json"
 
 # ==================== Agent Settings (Vision / Grounding) ====================
 MAX_TURNS=5
@@ -35,17 +30,17 @@ VISION_MODEL="grok-4-fast-non-reasoning"
 GROUNDING_MODEL="grok-4-fast-reasoning"
 
 AGENT_SHARED_API_KEY="${AGENT_SHARED_API_KEY:-}"
-VISION_API_KEY="${VISION_API_KEY:-}"
-GROUNDING_API_KEY="${GROUNDING_API_KEY:-}"
+export GROUNDING_API_KEY="${GROUNDING_API_KEY:-${QDD_API:-${qdd_api:-}}}"
+export VISION_API_KEY="${VISION_API_KEY:-${QDD_API:-${qdd_api:-}}}"
 
-VISION_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode/v1"
+VISION_BASE_URL="https://api2.aigcbest.top/v1"
 GROUNDING_BASE_URL="https://api2.aigcbest.top/v1"
 
 # ==================== Resource & Parallel Settings ====================
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}"
-N_GPUS_PER_NODE=4
+N_GPUS_PER_NODE=1
 NNODES=1
-ROLLOUT_TENSOR_MODEL_PARALLEL_SIZE=2
+ROLLOUT_TENSOR_MODEL_PARALLEL_SIZE=1
 VLLM_GPU_MEMORY_UTILIZATION=0.30
 ROLLOUT_MAX_NUM_BATCHED_TOKENS=15001
 ROLLOUT_LOG_PROB_MICRO_BSZ=2
@@ -79,7 +74,7 @@ echo "Agent loop config: ${AGENT_LOOP_CONFIG}"
 echo "Reward function: ${REWARD_FN_PATH}"
 echo "Experiment name: ${EXPERIMENT_NAME}"
 
-cd "${VERL_NEW_ROOT}"
+
 
 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=$ADV_ESTIMATOR \
@@ -122,24 +117,25 @@ PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.rollout.multi_turn.max_tool_response_length=$MAX_OBS_LEN \
     actor_rollout_ref.rollout.agent.default_agent_loop=longvideoagent_multiturn \
     actor_rollout_ref.rollout.agent.agent_loop_config_path=$AGENT_LOOP_CONFIG \
-    actor_rollout_ref.rollout.custom={} \
-    actor_rollout_ref.rollout.custom.videoagent.max_turns=$MAX_TURNS \
-    actor_rollout_ref.rollout.custom.videoagent.max_obs_length=$MAX_OBS_LEN \
-    actor_rollout_ref.rollout.custom.videoagent.base_frame_dir="$VISION_BASE_FRAME_DIR" \
-    actor_rollout_ref.rollout.custom.videoagent.bbox_json_path="$VISION_BBOX_JSON_PATH" \
-    actor_rollout_ref.rollout.custom.videoagent.subs_path="$VISION_SUBS_PATH" \
-    actor_rollout_ref.rollout.custom.videoagent.vision_model="$VISION_MODEL" \
-    actor_rollout_ref.rollout.custom.videoagent.grounding_model="$GROUNDING_MODEL" \
-    actor_rollout_ref.rollout.custom.videoagent.grounding_temperature=0.6 \
-    actor_rollout_ref.rollout.custom.videoagent.grounding_max_tokens=512 \
-    actor_rollout_ref.rollout.custom.videoagent.api_key="$AGENT_SHARED_API_KEY" \
-    actor_rollout_ref.rollout.custom.videoagent.vision_api="$VISION_API_KEY" \
-    actor_rollout_ref.rollout.custom.videoagent.grounding_api="$GROUNDING_API_KEY" \
-    actor_rollout_ref.rollout.custom.videoagent.vision_base_url="$VISION_BASE_URL" \
-    actor_rollout_ref.rollout.custom.videoagent.grounding_base_url="$GROUNDING_BASE_URL" \
-    actor_rollout_ref.rollout.custom.videoagent.frame_start=1 \
-    actor_rollout_ref.rollout.custom.videoagent.frame_end=180 \
-    actor_rollout_ref.rollout.custom.videoagent.frame_step=15 \
+    +actor_rollout_ref.rollout.custom={} \
+    +actor_rollout_ref.rollout.custom={} \
+    +actor_rollout_ref.rollout.custom.videoagent.max_turns=$MAX_TURNS \
+    +actor_rollout_ref.rollout.custom.videoagent.max_obs_length=$MAX_OBS_LEN \
+    +actor_rollout_ref.rollout.custom.videoagent.base_frame_dir="$VISION_BASE_FRAME_DIR" \
+    +actor_rollout_ref.rollout.custom.videoagent.bbox_json_path="$VISION_BBOX_JSON_PATH" \
+    +actor_rollout_ref.rollout.custom.videoagent.subs_path="$VISION_SUBS_PATH" \
+    +actor_rollout_ref.rollout.custom.videoagent.vision_model="$VISION_MODEL" \
+    +actor_rollout_ref.rollout.custom.videoagent.grounding_model="$GROUNDING_MODEL" \
+    +actor_rollout_ref.rollout.custom.videoagent.grounding_temperature=0.6 \
+    +actor_rollout_ref.rollout.custom.videoagent.grounding_max_tokens=512 \
+    +actor_rollout_ref.rollout.custom.videoagent.api_key="$AGENT_SHARED_API_KEY" \
+    +actor_rollout_ref.rollout.custom.videoagent.vision_api="$VISION_API_KEY" \
+    +actor_rollout_ref.rollout.custom.videoagent.grounding_api="$GROUNDING_API_KEY" \
+    +actor_rollout_ref.rollout.custom.videoagent.vision_base_url="$VISION_BASE_URL" \
+    +actor_rollout_ref.rollout.custom.videoagent.grounding_base_url="$GROUNDING_BASE_URL" \
+    +actor_rollout_ref.rollout.custom.videoagent.frame_start=1 \
+    +actor_rollout_ref.rollout.custom.videoagent.frame_end=180 \
+    +actor_rollout_ref.rollout.custom.videoagent.frame_step=15 \
     actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu=$REF_LOG_PROB_MICRO_BSZ \
     actor_rollout_ref.ref.fsdp_config.param_offload=true \
     actor_rollout_ref.ref.ulysses_sequence_parallel_size=1 \
@@ -149,7 +145,7 @@ PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     reward.custom_reward_function.name=compute_score \
     reward.reward_manager.name=naive \
     trainer.critic_warmup=0 \
-    'trainer.logger=["wandb"]' \
+    'trainer.logger=["console"]' \
     trainer.project_name=$WAND_PROJECT \
     trainer.experiment_name=$EXPERIMENT_NAME \
     trainer.n_gpus_per_node=$N_GPUS_PER_NODE \
