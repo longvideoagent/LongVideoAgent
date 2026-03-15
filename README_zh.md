@@ -8,6 +8,8 @@
 > `main` 分支记录当前默认的训练路径。基于新版 `verl` 的实验训练链路目前保留在 `newversion` 分支，供愿意尝试的用户自行切换。不同分支的训练配置、行为和结果可能存在明显差异，请先切换到对应分支，再阅读该分支下的文档。
 
 ## 🚀 最新消息
+• `[2026/03/15]:` 🌿 我们补充了 `newversion` 分支，供希望尝试基于新版 `verl` 的实验训练链路的用户自行切换使用。
+
 • `[2026/03/07]:` 🤗 我们在 [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-3b) 发布了 **LongVideoAgent-Qwen2.5-3B** 模型权重。
 
 • `[2026/03/06]:` 🚀 我们发布了 **LongVideoAgent** 的**训练代码**与**评测代码**！
