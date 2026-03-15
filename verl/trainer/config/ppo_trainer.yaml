@@ -7,16 +7,18 @@
 # specify the default per-component configs
 defaults:
 
+  - model_engine: dp
+
   # <folder_name>@<field_name>.<field_name>: <yaml_file_name>
   # actor_rollout_ref.actor: trainer/config/actor/dp_actor.yaml
-  - actor@actor_rollout_ref.actor: dp_actor
+  - actor@actor_rollout_ref.actor: ${model_engine}_actor
 
   # data: trainer/config/data/legacy_data.yaml
   - data@data: legacy_data
 
   # Reference model config.
   # Reference model will be enabled when actor.use_kl_loss or/and algorithm.use_kl_in_reward is/are True.
-  - ref@actor_rollout_ref.ref: dp_ref
+  - ref@actor_rollout_ref.ref: ${model_engine}_ref
 
   # Rollout model config.
   - rollout@actor_rollout_ref.rollout: rollout
@@ -25,10 +27,16 @@ defaults:
   - model@actor_rollout_ref.model: hf_model
 
   # Critic model config.
-  - critic@critic: dp_critic
+  - critic@critic: ${model_engine}_critic
 
-  # Reward model config.
-  - reward_model@reward_model: dp_reward_model
+  # legacy reward impl config, for backward compatibility
+  - legacy_reward_impl
+
+  # Reward config.
+  - reward@reward: reward
+
+  # Rollout correction config.
+  - algorithm@algorithm.rollout_correction: rollout_correction
 
   # load the reference default config, then apply the fields in the current yaml
   # self config override anything above
@@ -48,30 +56,6 @@ actor_rollout_ref:
 
     # for huge model, layered summon can save memory (prevent OOM) but make it slower
     layered_summon: False
-
-# custom reward function definition
-custom_reward_function:
-
-  # The path to the file containing your customized reward function.
-  # If not specified, pre-implemented reward functions will be used.
-  path: null
-
-  # The name of the reward function within the specified file. Default is 'compute_score'.
-  name: compute_score
-
-# Maximum number of turns in videoagent multi-turn rollout loop.
-max_turns: 1
-
-# Additional data fields used by videoagent multi-turn rollout.
-data:
-
-  # Maximum prompt tokens kept as starting context before iterative generation.
-  # Default keeps the whole prompt window.
-  max_start_length: ${data.max_prompt_length}
-
-  # Maximum tokens for each appended environment observation.
-  # If omitted in overrides, ray_trainer also falls back to max_response_length.
-  max_obs_length: ${data.max_response_length}
 
 # config for the algorithm
 algorithm:
@@ -126,97 +110,6 @@ algorithm:
 
     # Power used for weight scaling in "pow" method
     weight_pow: 2.0
-
-  # Rollout Importance Sampling: corrects distribution mismatch between rollout and training policies
-  # Main control: Upper threshold for IS weights (null = disabled, float = enabled)
-  # When enabled, computes IS weights and mismatch metrics (KL, PPL, etc.)
-  rollout_is_threshold: null
-
-  # Lower threshold for IS weights (null = auto-reciprocal of upper)
-  rollout_is_threshold_lower: null
-
-  # Aggregation level: "token" (biased), "sequence" (unbiased), "geometric" (experimental)
-  rollout_is_level: token
-
-  # Bounding mode: "truncate" (cap upper only), "mask" (zero outside bounds)
-  rollout_is_mode: truncate
-
-  # Per-token veto threshold for catastrophic outliers
-  rollout_is_veto_threshold: 1e-4
-
-  # Whether to apply IS weights to policy loss
-  # true = apply weights to loss, false = compute metrics only (no weight application)
-  # Useful for monitoring mismatch before enabling correction
-  rollout_is: false
-
-# Vision-agent configuration used by videoagent.action_generation.
-vision:
-
-  # Root directory of extracted video frames.
-  base_frame_dir: ../bbt_frames
-
-  # Frames-per-second metadata for downstream logic.
-  fps: 3
-
-  # Number of frames metadata for downstream logic.
-  num_frames: 7
-
-  # Window size (seconds) metadata for downstream logic.
-  window_sec: 5
-
-  # Vision model used for image understanding requests.
-  vision_model: gpt-4o
-
-  # Grounding model used for subtitle-based clip localization.
-  grounding_model: grok-4-fast-reasoning
-
-  # Temperature for grounding model requests.
-  grounding_temperature: 0.6
-
-  # Max tokens for grounding model requests.
-  grounding_max_tokens: 512
-
-  # Optional shared API key.
-  api_key: null
-
-  # Optional API key for grounding endpoint.
-  grounding_api: null
-
-  # Optional API key for vision endpoint.
-  vision_api: null
-
-  # Optional API key for main endpoint.
-  main_api: null
-
-  # Base URL for grounding OpenAI-compatible endpoint.
-  grounding_base_url: https://api2.aigcbest.top/v1
-
-  # Base URL for vision OpenAI-compatible endpoint.
-  vision_base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
-
-  # Base URL for main OpenAI-compatible endpoint.
-  main_base_url: https://api2.aigcbest.top/v1
-
-  # Key name used to fetch video id from dataset fields.
-  video_id_key: vid_name
-
-  # Top-k metadata placeholder for retrieval style extensions.
-  topk: 3
-
-  # Path to bbox annotations JSON.
-  bbox_json_path: bbox_annotations.json
-
-  # Path to clip-level subtitles JSON.
-  subs_path: ../Tvqa_data/all_episodes_subtitles_by_clips.json
-
-  # First frame index for fixed frame sampling.
-  frame_start: 1
-
-  # Last frame index for fixed frame sampling.
-  frame_end: 180
-
-  # Frame stride for fixed frame sampling.
-  frame_step: 15
 
 # config for the trainer
 trainer:
