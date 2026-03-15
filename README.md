@@ -64,6 +64,9 @@ For step-by-step installation details, see [docs/installation.md](docs/installat
 ---
 
 ## 🏋️ Train
+> **Note**
+> `main` documents the current default training path. An experimental training stack based on the updated `verl` is currently kept on the `newversion` branch for users who want to try it separately. Training configs, behavior, and outcomes may differ noticeably across branches, so please switch branches first and follow the corresponding branch documentation.
+
 The recommended training flow is: prepare datasets, build an offline grounding cache, convert data to GRPO parquet files, and then launch the quickstart script.
 
 ### 1. Download and prepare LongTVQA assets
