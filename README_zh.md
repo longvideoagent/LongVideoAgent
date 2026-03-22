@@ -5,6 +5,8 @@
 训练、评测、安装与快速开始相关说明，请参见 [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/)。模型权重已发布在 [Hugging Face](https://huggingface.co/longvideoagent/)。
 
 ## 🚀 最新消息
+• `[2026/03/22]:` 🤗 我们在 [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b) 发布了 **LongVideoAgent-Qwen2.5-7B** 模型权重。
+
 • `[2026/03/07]:` 🤗 我们在 [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-3b) 发布了 **LongVideoAgent-Qwen2.5-3B** 模型权重。
 
 • `[2026/03/06]:` 🚀 我们发布了 **LongVideoAgent** 的**训练代码**与**评测代码**！
@@ -14,6 +16,7 @@
 • `[2026/02/14]:` 📦 我们在 [Hugging Face](https://huggingface.co/datasets/longvideoagent/LongTVQA) 发布了 **LongTVQA** 数据集。
 
 ## 📅 Roadmap（路线图）
+- [x] **[2026/03/22]**: 在 [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b) 发布 **LongVideoAgent-Qwen2.5-7B** 模型权重。
 - [x] **[2026/02/14]**: 发布 **LongTVQA** 数据集。
 - [x] **[2026/03/06]**: 发布训练代码与评测代码。
 - [x] **[2026/03/07]**: 在 [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-3b) 发布 **LongVideoAgent-Qwen2.5-3B** 模型权重。
