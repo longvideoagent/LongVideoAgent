@@ -17,6 +17,8 @@ Hong Kong University of Science and Technology
 This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available, and model weights are released on [Hugging Face](https://huggingface.co/longvideoagent/). This README provides a compact code overview, while the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) contain the full setup, workflow, and argument details.
 
 ## 🚀 Latest News
+• `[2026/03/22]:` 🤗 We released the **LongVideoAgent-Qwen2.5-7B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b).
+
 • `[2026/03/07]:` 🤗 We released the **LongVideoAgent-Qwen2.5-3B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-3b).
 
 • `[2026/03/06]:` 🚀 We released the **training** and **evaluation** code for **LongVideoAgent**.
@@ -30,6 +32,7 @@ This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). T
 ---
 
 ## 📅 Roadmap
+- [x] **[2026/03/22]**: Released the **LongVideoAgent-Qwen2.5-7B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b).
 - [x] **[2026/03/06]**: Released training and evaluation code.
 - [x] **[2026/03/07]**: Released the **LongVideoAgent-Qwen2.5-3B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-3b).
 
