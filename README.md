@@ -17,6 +17,10 @@ Hong Kong University of Science and Technology
 This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available, and model weights are released on [Hugging Face](https://huggingface.co/longvideoagent/). This README provides a compact code overview, while the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) contain the full setup, workflow, and argument details.
 
 ## 🚀 Latest News
+• `[2026/03/22]:` 🤗 We released the **LongVideoAgent-Qwen2.5-7B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b). This checkpoint was trained on the `newversion` branch.
+
+• `[2026/03/15]:` 🌿 We added the `newversion` branch for users who want to try the updated `verl`-based experimental training stack.
+
 • `[2026/03/07]:` 🤗 We released the **LongVideoAgent-Qwen2.5-3B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-3b).
 
 • `[2026/03/06]:` 🚀 We released the **training** and **evaluation** code for **LongVideoAgent**.
@@ -30,6 +34,7 @@ This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). T
 ---
 
 ## 📅 Roadmap
+- [x] **[2026/03/22]**: Released the **LongVideoAgent-Qwen2.5-7B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b).
 - [x] **[2026/03/06]**: Released training and evaluation code.
 - [x] **[2026/03/07]**: Released the **LongVideoAgent-Qwen2.5-3B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-3b).
 
@@ -64,6 +69,9 @@ For step-by-step installation details, see [docs/installation.md](docs/installat
 ---
 
 ## 🏋️ Train
+> **Note**
+> `main` documents the current default training path. An experimental training stack based on the updated `verl` is currently kept on the `newversion` branch for users who want to try it separately. Training configs, behavior, and outcomes may differ noticeably across branches, so please switch branches first and follow the corresponding branch documentation.
+
 The recommended training flow is: prepare datasets, build an offline grounding cache, convert data to GRPO parquet files, and then launch the quickstart script.
 
 ### 1. Download and prepare LongTVQA assets
