@@ -142,11 +142,12 @@ def initialize_main_model() -> None:
         tokenizer=config.llm_path,
         tensor_parallel_size=1,
         gpu_memory_utilization=config.gpu_memory_utilization,
+        max_model_len=60000,
         trust_remote_code=True,
     )
     sampling_params = SamplingParams(
         temperature=0.6,
-        max_tokens=1024,
+        max_tokens=3172,
         skip_special_tokens=True,
     )
     log_info("Main local vLLM initialized.")
