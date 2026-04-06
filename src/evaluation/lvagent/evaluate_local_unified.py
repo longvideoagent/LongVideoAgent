@@ -142,11 +142,12 @@ def initialize_main_model() -> None:
         tokenizer=config.llm_path,
         tensor_parallel_size=1,
         gpu_memory_utilization=config.gpu_memory_utilization,
+        max_model_len=60000,
         trust_remote_code=True,
     )
     sampling_params = SamplingParams(
         temperature=0.6,
-        max_tokens=1024,
+        max_tokens=4096,
         skip_special_tokens=True,
     )
     log_info("Main local vLLM initialized.")
@@ -886,8 +887,8 @@ def main() -> None:
         raise FileNotFoundError(f"Subtitles file not found: {subs_path}")
     if not Path(base_frame_dir).is_dir():
         raise FileNotFoundError(f"Frame directory not found: {base_frame_dir}")
-    if not Path(args.llm_path).exists():
-        raise FileNotFoundError(f"LLM path not found: {args.llm_path}")
+    # if not Path(args.llm_path).exists():
+    #     raise FileNotFoundError(f"LLM path not found: {args.llm_path}")
     if args.dataset == "tvqa_plus":
         if not bbox_json_path or not Path(str(bbox_json_path)).is_file():
             raise FileNotFoundError(f"BBox JSON file not found: {bbox_json_path}")
