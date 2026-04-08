@@ -6,6 +6,8 @@
 
 Runtao Liu\*, Ziyi Liu\*, Jiaqi Tang, Yue Ma, Renjie Pi, Jipeng Zhang, Qifeng Chen
 
+**ACL 2026 Main**
+
 Hong Kong University of Science and Technology
 
 \* Equal contribution
