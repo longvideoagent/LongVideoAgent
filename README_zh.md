@@ -2,12 +2,14 @@
 
 [English](./README.md) | [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) | [🤗 Hugging Face](https://huggingface.co/longvideoagent/) | [Models](https://huggingface.co/longvideoagent/models) | [Project Page](https://longvideoagent.github.io/) | [Arxiv](https://arxiv.org/abs/2512.20618)
 
-训练、评测、安装与快速开始相关说明，请参见 [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/)。模型权重已发布在 [Hugging Face](https://huggingface.co/longvideoagent/)。
+这是我们 ACL 2026 Main 论文《LongVideoAgent: Multi-Agent Reasoning with Long Videos》的官方仓库。训练、评测、安装与快速开始相关说明，请参见 [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/)。模型权重已发布在 [Hugging Face](https://huggingface.co/longvideoagent/)。
 
 > **提示**
 > `main` 分支记录当前默认的训练路径。基于新版 `verl` 的实验训练链路目前保留在 `newversion` 分支，供愿意尝试的用户自行切换。不同分支的训练配置、行为和结果可能存在明显差异，请先切换到对应分支，再阅读该分支下的文档。
 
 ## 🚀 最新消息
+• `[2026/04/08]:` 🎉 我们的论文 **LongVideoAgent: Multi-Agent Reasoning with Long Videos** 已被 **ACL 2026 Main Conference** 接收。
+
 • `[2026/03/22]:` 🤗 我们在 [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b) 发布了 **LongVideoAgent-Qwen2.5-7B** 模型权重，该 checkpoint 使用 `newversion` 分支训练。
 
 • `[2026/03/15]:` 🌿 我们补充了 `newversion` 分支，供希望尝试基于新版 `verl` 的实验训练链路的用户自行切换使用。

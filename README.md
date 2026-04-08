@@ -14,9 +14,11 @@ Hong Kong University of Science and Technology
 
 ---
 
-This is the official repository for [arXiv](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available, and model weights are released on [Hugging Face](https://huggingface.co/longvideoagent/). This README provides a compact code overview, while the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) contain the full setup, workflow, and argument details.
+This is the official repository for our ACL 2026 Main paper, [LongVideoAgent: Multi-Agent Reasoning with Long Videos](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available, and model weights are released on [Hugging Face](https://huggingface.co/longvideoagent/). This README provides a compact code overview, while the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) contain the full setup, workflow, and argument details.
 
 ## 🚀 Latest News
+• `[2026/04/08]:` 🎉 Our paper **LongVideoAgent: Multi-Agent Reasoning with Long Videos** was accepted to **ACL 2026 Main Conference**.
+
 • `[2026/03/22]:` 🤗 We released the **LongVideoAgent-Qwen2.5-7B** model weights on [Hugging Face](https://huggingface.co/longvideoagent/longvideoagent-qwen2.5-7b). This checkpoint was trained on the `newversion` branch.
 
 • `[2026/03/15]:` 🌿 We added the `newversion` branch for users who want to try the updated `verl`-based experimental training stack.
