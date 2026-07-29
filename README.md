@@ -207,14 +207,29 @@ We conduct comprehensive ablation studies to validate our design choices. First,
 ## 📝 Citation
 If you find our work helpful, please cite:
 ```bibtex
-@misc{liu2025longvideoagentmultiagentreasoninglong,
-      title={LongVideoAgent: Multi-Agent Reasoning with Long Videos}, 
-      author={Runtao Liu and Ziyi Liu and Jiaqi Tang and Yue Ma and Renjie Pi and Jipeng Zhang and Qifeng Chen},
-      year={2025},
-      eprint={2512.20618},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2512.20618}, 
+@inproceedings{liu-etal-2026-longvideoagent,
+    title = "{L}ong{V}ideo{A}gent: Multi-Agent Reasoning with Long Videos",
+    author = "Liu, Runtao  and
+      Liu, Ziyi  and
+      Tang, Jiaqi  and
+      Ma, Yue  and
+      Pi, Renjie  and
+      Zhang, Jipeng  and
+      Chen, Qifeng",
+    editor = "Liakata, Maria  and
+      Moreira, Viviane P.  and
+      Zhang, Jiajun  and
+      Jurgens, David",
+    booktitle = "Proceedings of the 64th Annual Meeting of the {A}ssociation for {C}omputational {L}inguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.acl-long.1876/",
+    doi = "10.18653/v1/2026.acl-long.1876",
+    pages = "40404--40416",
+    ISBN = "979-8-89176-390-6",
+    abstract = "Recent advances in multimodal LLMs and systems that use tools for long-video QA point to the promise of reasoning over hour-long episodes. However, many methods still compress content into lossy summaries or rely on limited toolsets, weakening temporal grounding and missing fine-grained cues. We propose a multi-agent framework in which a master LLM coordinates a grounding agent to localize question-relevant segments and a vision agent to extract targeted textual observations. The master agent plans with a step limit, and is trained with reinforcement learning to encourage concise, correct, and efficient multi-agent cooperation. This design helps the master agent focus on relevant clips via grounding, complements subtitles with visual detail, and yields interpretable trajectories. On our proposed *LongTVQA* and *LongTVQA+* which are episode-level datasets aggregated from TVQA/TVQA+, our multi-agent system significantly outperforms strong non-agent baselines. Experiments also show reinforcement learning further strengthens reasoning and planning for the trained agent."
 }
 ```
 
