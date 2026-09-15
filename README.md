@@ -15,8 +15,11 @@ Hong Kong University of Science and Technology
 </div>
 
 ---
+This is the official repository for our ACL 2026 Main paper, [LongVideoAgent: Multi-Agent Reasoning with Long Videos](https://arxiv.org/abs/2512.20618). 
 
-This is the official repository for our ACL 2026 Main paper, [LongVideoAgent: Multi-Agent Reasoning with Long Videos](https://arxiv.org/abs/2512.20618). Training and evaluation code are now available, and model weights are released on [Hugging Face](https://huggingface.co/longvideoagent/). This README provides a compact code overview, while the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) contain the full setup, workflow, and argument details.
+LongVideoAgent is a multi-agent framework for long-video question answering, designed to reason over hour-long videos through coordinated temporal grounding and visual understanding. A Master Agent dynamically orchestrates a Grounding Agent to locate question-relevant segments and a Vision Agent to extract targeted visual observations. LongVideoAgent achieves state-of-the-art performance on our episode-level LongTVQA and LongTVQA+ benchmarks.
+
+Training and evaluation code are now available, and model weights are released on [Hugging Face](https://huggingface.co/longvideoagent/). This README provides a compact code overview, while the [📚 Docs](https://longvideoagent.github.io/LongVideoAgent/) contain the full setup, workflow, and argument details.
 
 ## 🚀 Latest News
 • `[2026/04/08]:` 🎉 Our paper has been accepted to **ACL 2026 Main Conference**.
